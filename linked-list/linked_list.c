@@ -1,7 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-typedef struct NODE {
+//Declaring our node
+typedef struct NODE {  
 
 	int value;
 	struct NODE* next;
@@ -53,7 +54,19 @@ void print_list(node* head ){
 		head = head->next;
 	}
 	printf("%p",NULL);
+
+	return;
 	
+}
+
+void free_list(node* head){
+	node* next_node = NULL;
+
+	while(head != NULL){
+		next_node = head->next;
+		free(head);
+		head = next_node;
+	}
 }
 
 int main(){
@@ -72,6 +85,7 @@ int main(){
 	insert_ending(&head, 13);
 	insert_ending(&head, 14);
 	print_list(head);
+	free_list(head);
 
 	return 0;
 
