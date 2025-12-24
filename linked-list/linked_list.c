@@ -73,18 +73,20 @@ int main(){
 	
 	node* head = NULL;
 
+	insert_beginning(&head,1);
+	insert_beginning(&head,2);
+	insert_beginning(&head,3);
 	insert_beginning(&head,4);
 	insert_beginning(&head,5);
-	insert_beginning(&head,6);
-	insert_beginning(&head,7);
-	insert_beginning(&head,8);
+
+	insert_ending(&head, 6);
+	insert_ending(&head, 7);
+	insert_ending(&head, 8);
 	insert_ending(&head, 9);
 	insert_ending(&head, 10);
-	insert_ending(&head, 11);
-	insert_ending(&head, 12);
-	insert_ending(&head, 13);
-	insert_ending(&head, 14);
+	
 	print_list(head);
+
 	free_list(head);
 
 	return 0;
