@@ -1,10 +1,10 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-//Declaring our node
+//Declaring Node
 typedef struct NODE {  
 
-	int value;
+	int value; 
 	struct NODE* next;
 
 } node;
