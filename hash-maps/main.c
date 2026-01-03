@@ -1,32 +1,36 @@
-#include<stdio.h>
-#include<string.h>
+#include <stdio.h>
 #include "hash-maps.h"
 
-#define NAME_SIZE 50 
-#define PHONE_SIZE 16
+int main(void) {
+    const char *result;
 
-int main(int argc,char *argv[]){
+    /* Insert entries */
+    hash_put("Alice", "9876543210");
+    hash_put("Bob", "1234567890");
+    hash_put("Charlie", "5555555555");
 
-	char name[NAME_SIZE];
-	char phone[PHONE_SIZE];
+    /* Lookup existing keys */
+    result = hash_get("Alice");
+    printf("Alice -> %s\n", result ? result : "NOT FOUND");
 
-	printf("Enter Name: ");
-	if(fgets(name,NAME_SIZE,stdin) == NULL)
-		return 1;
+    result = hash_get("Bob");
+    printf("Bob -> %s\n", result ? result : "NOT FOUND");
 
-	printf("Enter Phone: ");
-	if(fgets(phone,PHONE_SIZE,stdin)==NULL)
-		return 1;
+    result = hash_get("Charlie");
+    printf("Charlie -> %s\n", result ? result : "NOT FOUND");
 
-	name[strcspn(name),"\n"];
-	phone[strcspn(phone),"\n"];
+    /* Lookup missing key */
+    result = hash_get("David");
+    printf("David -> %s\n", result ? result : "NOT FOUND");
 
+    /* Update existing key */
+    hash_put("Alice", "1111111111");
+    result = hash_get("Alice");
+    printf("Alice (updated) -> %s\n", result ? result : "NOT FOUND");
 
-	printf("%s",name);
-	printf("%s",phone);
-	
-	return 0;
-	
+    /* Cleanup */
+    free_table();
+
+    return 0;
 }
-
 
