@@ -9,7 +9,7 @@
 
 typedef struct STACK{
 	uint32_t data[SIZE];
-	size_t top;
+	int32_t top;
 }STACK;
 
 void stack_init(STACK *s);
